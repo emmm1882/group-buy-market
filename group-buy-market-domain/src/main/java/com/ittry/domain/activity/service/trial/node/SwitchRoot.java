@@ -10,9 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 /**
- * @author Fuzhengwei bugstack.cn @小傅哥
  * @description 开关节点
- * @create 2024-12-14 14:27
  */
 @Slf4j
 @Service
