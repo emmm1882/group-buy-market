@@ -35,10 +35,6 @@ public class MarketNode extends AbstractGroupBuyMarketSupport<MarketProductEntit
     private EndNode endNode;
     @Resource
     private ErrorNode errorNode;
-
-    /**
-     * <a href="https://bugstack.cn/md/road-map/spring-dependency-injection.html">Spring 注入详细说明</a>
-     */
     @Resource
     private Map<String, IDiscountCalculateService> discountCalculateServiceMap;
 

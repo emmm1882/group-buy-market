@@ -18,9 +18,7 @@ import org.springframework.stereotype.Repository;
 import javax.annotation.Resource;
 
 /**
- * @author Fuzhengwei bugstack.cn @小傅哥
  * @description 活动仓储
- * @create 2024-12-21 10:10
  */
 @Repository
 public class ActivityRepository implements IActivityRepository {

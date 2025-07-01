@@ -14,7 +14,7 @@ import lombok.NoArgsConstructor;
  */
 public class MarketProductEntity {
 
-   private String userId;
+    private String userId;
     private String goodsId;
     private String source;
     private String channel;
