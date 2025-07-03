@@ -80,22 +80,12 @@ public class GroupBuyActivityDiscountVO {
      */
     private String tagScope;
 
-    public boolean isVisible(){
-        if (StringUtils.isBlank(this.tagScope)) return TagScopeEnumVO.VISIBLE.getAllow();
-        String[] split = this.tagScope.split(Constants.SPLIT);
-        if( split.length == 0 && Objects.equals(split[0],"1")){
-            return TagScopeEnumVO.VISIBLE.getRefuse();
-        }
-        return TagScopeEnumVO.VISIBLE.getAllow();
-    };
+    public boolean isVisible() {
+        return tagScope != null && tagScope.contains("1");
+    }
 
-    public boolean isEnable(){
-        if(StringUtils.isBlank(this.tagScope)) return TagScopeEnumVO.ENABLE.getAllow();
-        String[] split = this.tagScope.split(Constants.SPLIT);
-        if( split.length == 2 && "2".equals(split[1])){
-            return TagScopeEnumVO.ENABLE.getRefuse();
-        }
-        return TagScopeEnumVO.ENABLE.getAllow();
+    public boolean isEnable() {
+        return tagScope != null && tagScope.contains("2");
     }
 
     @Getter

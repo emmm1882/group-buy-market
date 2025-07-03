@@ -25,27 +25,18 @@ public class TagNode extends AbstractGroupBuyMarketSupport<MarketProductEntity, 
         GroupBuyActivityDiscountVO groupBuyActivityDiscountVO = dynamicContext.getGroupBuyActivityDiscountVO();
 
         String tagId = groupBuyActivityDiscountVO.getTagId();
+        boolean limitVisible = groupBuyActivityDiscountVO.isVisible();
+        boolean limitEnable = groupBuyActivityDiscountVO.isEnable();
 
-        boolean visible = groupBuyActivityDiscountVO.isVisible();
-        boolean enable = groupBuyActivityDiscountVO.isEnable();
-
-        if(StringUtils.isBlank(tagId)) {
+        if (StringUtils.isBlank(tagId)) {
             dynamicContext.setVisible(true);
             dynamicContext.setEnable(true);
             return router(requestParameter, dynamicContext);
         }
 
-//        dynamicContext.setVisible(visible || isWithin);
-//        dynamicContext.setEnable(enable || isWithin);
-        if (StringUtils.isBlank(tagId)) {
-            dynamicContext.setVisible(visible);
-            dynamicContext.setEnable(enable);
-        } else {
-            boolean isWithin = repository.isTagCrowRange(tagId, requestParameter.getUserId());
-            dynamicContext.setVisible(isWithin);
-            dynamicContext.setEnable(isWithin);
-        }
-
+        boolean isWithin = repository.isTagCrowRange(tagId, requestParameter.getUserId());
+        dynamicContext.setVisible(limitVisible ? isWithin : true);
+        dynamicContext.setEnable(limitEnable ? isWithin : true);
         return router(requestParameter, dynamicContext);
     }
 
