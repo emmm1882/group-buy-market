@@ -14,6 +14,7 @@ import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 /**
  * @description 人群标签仓储
@@ -73,6 +74,27 @@ public class TagRepository implements ITagRepository {
         crowdTagsReq.setStatistics(count);
 
         crowdTagsDao.updateCrowdTagsStatistics(crowdTagsReq);
+    }
+
+    /**
+     * 全量同步数据库人群标签明细到Redis BitSet
+     */
+    public void syncAllCrowdTagsToRedis() {
+        List<CrowdTagsDetail> all = crowdTagsDetailDao.selectAll();
+        int count = 0;
+        for (CrowdTagsDetail detail : all) {
+            try {
+                RBitSet bitSet = redisService.getBitSet(detail.getTagId());
+                bitSet.set(redisService.getIndexFromUserId(detail.getUserId()), true);
+                count++;
+                if (count % 1000 == 0) {
+                    System.out.println("[syncAllCrowdTagsToRedis] 进度：" + count + " 条");
+                }
+            } catch (Exception e) {
+                System.err.println("[syncAllCrowdTagsToRedis] 同步失败，tagId=" + detail.getTagId() + ", userId=" + detail.getUserId() + ", 错误：" + e.getMessage());
+            }
+        }
+        System.out.println("[syncAllCrowdTagsToRedis] 同步完成，总计同步 " + count + " 条人群标签明细到Redis");
     }
 
 }

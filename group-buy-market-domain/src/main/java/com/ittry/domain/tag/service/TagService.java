@@ -44,4 +44,11 @@ public class TagService implements ITagService {
         repository.updateCrowdTagsStatistics(tagId, userIdList.size());
     }
 
+    /**
+     * 全量同步数据库人群标签明细到Redis BitSet
+     */
+    public void syncAllCrowdTagsToRedis() {
+        repository.syncAllCrowdTagsToRedis();
+    }
+
 }

@@ -15,4 +15,8 @@
         values (#{tagId}, #{userId}, now(), now())
     </insert>
 
+    <select id="selectAll" resultMap="dataMap">
+        select id, tag_id, user_id, create_time, update_time from crowd_tags_detail
+    </select>
+
 </mapper>

@@ -37,4 +37,9 @@ public class ITagServiceTest {
         log.info("yll 不存在，预期结果为 false，测试结果:{}", bitSet.get(redisService.getIndexFromUserId("yll")));
     }
 
+    @Test
+    public void test_syncAllCrowdTagsToRedis() {
+        tagService.syncAllCrowdTagsToRedis();
+    }
+
 }

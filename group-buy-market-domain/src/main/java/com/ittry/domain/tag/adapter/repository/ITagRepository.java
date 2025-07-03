@@ -13,4 +13,9 @@ public interface ITagRepository {
 
     void updateCrowdTagsStatistics(String tagId, int count);
 
+    /**
+     * 全量同步数据库人群标签明细到Redis BitSet
+     */
+    void syncAllCrowdTagsToRedis();
+
 }
