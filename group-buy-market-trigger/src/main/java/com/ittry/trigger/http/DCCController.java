@@ -29,7 +29,7 @@ public class DCCController implements IDCCService {
 
     @RequestMapping(value = "update_config",method = RequestMethod.GET)
     @Override
-    public Response<Boolean> updateConfin(@RequestParam String key,
+    public Response<Boolean> updateConfig(@RequestParam String key,
                                           @RequestParam String value) {
         try {
 

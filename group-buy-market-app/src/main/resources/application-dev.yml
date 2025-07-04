@@ -49,6 +49,8 @@ redis:
       retry-interval: 1000
       ping-interval: 60000
       keep-alive: true
+
+
 # 日志
 logging:
   level:

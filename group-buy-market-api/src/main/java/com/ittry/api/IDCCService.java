@@ -4,5 +4,5 @@ import com.ittry.api.response.Response;
 
 public interface IDCCService {
 
-    Response<Boolean> updateConfin(String key, String value);
+    Response<Boolean> updateConfig(String key, String value);
 }

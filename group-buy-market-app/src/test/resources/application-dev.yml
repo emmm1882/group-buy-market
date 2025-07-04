@@ -57,3 +57,7 @@ logging:
     root: info
     com.ittry.infrastructure.dao: debug  # 添加MyBatis SQL日志，方便调试
   config: classpath:logback-spring.xml
+
+groupbuy:
+  downgradeSwitch: 0   # 0-关闭降级，1-开启降级
+  cutRange: 100        # 切范围开关，默认100表示全部命中
