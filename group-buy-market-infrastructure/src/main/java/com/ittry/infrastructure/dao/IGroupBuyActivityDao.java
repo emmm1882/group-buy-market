@@ -1,6 +1,7 @@
 package com.ittry.infrastructure.dao;
 
 
+import com.ittry.domain.trade.model.entity.GroupBuyActivityEntity;
 import com.ittry.infrastructure.dao.po.GroupBuyActivity;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -18,4 +19,5 @@ public interface IGroupBuyActivityDao {
 
     GroupBuyActivity queryValidGroupBuyActivityId(Long activityId);
 
+    GroupBuyActivity queryGroupBuyActivityByActivityId(Long activityId);
 }

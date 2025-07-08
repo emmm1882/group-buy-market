@@ -29,6 +29,9 @@ public class SwitchNode extends AbstractGroupBuyMarketSupport<MarketProductEntit
         String userId = requestParameter.getUserId();
 
         if(repository.downgradeSwitch()) {
+            String msg = String.format("拼团活动降级拦截, userId:%s, activityId:%s, goodsId:%s, 原因:DCC开关已打开", 
+                requestParameter.getUserId(), requestParameter.getActivityId(), requestParameter.getGoodsId());
+            log.error(msg);
             throw new AppException(ResponseCode.E0003.getCode(), ResponseCode.E0003.getInfo());
         }
 

@@ -20,4 +20,6 @@ public class GroupBuyOrderAggregate {
     private PayActivityEntity payActivityEntity;
     /** 支付优惠实体对象 */
     private PayDiscountEntity payDiscountEntity;
+    /** 用户已参与拼团量 - 用于构建数据库唯一索引使用，确保用户只能在一个活动上参与固定的次数 */
+    private Integer userTakeOrderCount;
 }

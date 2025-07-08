@@ -1,5 +1,6 @@
 package com.ittry.domain.activity.service.trial.node;
 
+import com.ittry.domain.activity.adapter.repository.IActivityRepository;
 import com.ittry.domain.activity.model.entity.MarketProductEntity;
 import com.ittry.domain.activity.model.entity.TrialBalanceEntity;
 import com.ittry.domain.activity.model.valobj.GroupBuyActivityDiscountVO;
@@ -18,6 +19,7 @@ public class TagNode extends AbstractGroupBuyMarketSupport<MarketProductEntity, 
 
     @Resource
     private EndNode endNode;
+
 
     @Override
     protected TrialBalanceEntity doApply(MarketProductEntity requestParameter, DefaultActivityStrategyFactory.DynamicContext dynamicContext) throws Exception {
